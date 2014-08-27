@@ -1,4 +1,9 @@
-// LockDomApp.java
+/**
+ * LockDomApp.java
+ *
+ * @author Ronny Z. Suero
+ */
+
 import viewClass.extrasUI.Splash;
 
 public class LockDomApp {

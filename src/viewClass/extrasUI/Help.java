@@ -20,7 +20,8 @@ public class Help {
 
 	public Help(final JMenuItem jmi, final MenuPrincipal mp) {
 		try {
-			fichero = new File("./help/help_set.hs");
+			// fichero = new File("./help/help_set.hs");
+			fichero = new File("help/help_set.hs");
 			hsURL = fichero.toURI().toURL();
 
 			helpset = new HelpSet(getClass().getClassLoader(), hsURL);

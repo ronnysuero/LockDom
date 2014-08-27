@@ -1,4 +1,8 @@
-// AccesoBD.java
+/**
+ * AccesoBD.java
+ *
+ * @author Ronny Z. Suero
+ */
 package dataAccessClass;
 
 import java.sql.ResultSet;
@@ -16,11 +20,18 @@ import businessClass.businessEntities.Empleado;
 import businessClass.businessEntities.Mercancia;
 
 public class AccesoBD extends DerbyDB {
-	// Funcion que iniciará la base de datos
+	
+	/**
+	 * Funcion que iniciará la base de datos
+	 * 
+	 * @return Runnable
+	 */
 	public static Runnable RUN_DB() {
-		/*
+		
+		/**
 		 * Clase que funcionará en un Thread e iniciara la base de datos al
 		 * tiempo que inicia la App.
+		 * 
 		 */
 		class IniciarDB implements Runnable {
 			public void run() {
@@ -33,25 +44,33 @@ public class AccesoBD extends DerbyDB {
 
 	private ResultSet resultado;
 
-	// Constructor
+	/**
+	 * Constructor de la clase
+	 * 
+	 */
 	public AccesoBD() {
 		super();
 	}
 
+	/**
+	 * Funcion que actualiza los datos de un cliente
+	 * 
+	 * @param  unCliente Este parametro define un objeto de la clase Cliente
+	 *                   a modificar
+	 *                   
+	 * @return boolean
+	 */
 	public boolean actualizarCliente(final Cliente unCliente) {
 		boolean valor = false;
 
 		try {
 			query.execute("UPDATE Direcciones SET Direcciones_NombreCalle = '"
 					+ unCliente.getDireccion().getNombreCalle()
-					+ "', "
-					+ "Direcciones_NumeroCasa = ' "
+					+ "', Direcciones_NumeroCasa = ' "
 					+ unCliente.getDireccion().getNumeroCasa()
-					+ "', "
-					+ "Direcciones_Sector = '"
+					+ "', Direcciones_Sector = '"
 					+ unCliente.getDireccion().getSector()
-					+ "', "
-					+ "Ciudades_Id = "
+					+ "', Ciudades_Id = "
 					+ "(SELECT Ciudades_Id FROM Ciudades WHERE Ciudades_Nombre = '"
 					+ unCliente.getDireccion().getCiudad()
 					+ "') WHERE Direcciones_Id = "
@@ -73,7 +92,14 @@ public class AccesoBD extends DerbyDB {
 		return valor;
 	}
 
-	// Funcion que actualiza una registro de una mercancia en la base de datos
+	/**
+	 * Funcion que actualiza una registro de una mercancia en la base de datos
+	 * 
+	 * @param  unaMercancia Este parametro define un objeto de la clase mercancia 
+	 *                      a modificar
+	 *                      
+	 * @return boolean
+	 */
 	public boolean actualizarMercancia(final Mercancia unaMercancia) {
 		boolean valor = false;
 
@@ -93,6 +119,13 @@ public class AccesoBD extends DerbyDB {
 		return valor;
 	}
 
+	/**
+	 * Funcion que almacena un cliente en la base de datos
+	 * 
+	 * @param  unCliente Este parametro define un objeto de la clase Cliente
+	 * 
+	 * @return none
+	 */
 	public boolean almacenarCliente(final Cliente unCliente) {
 		boolean valor = false;
 
@@ -128,8 +161,13 @@ public class AccesoBD extends DerbyDB {
 		return valor;
 	}
 
-	// Funcion que almacena un nuevo registro de la mercancia en la base de
-	// datos
+	/**
+	 * Funcion que almacena un nuevo registro de la mercancia en la base de
+	 * datos
+	 * 
+	 * @param  unaMercancia Este parametro define un objeto de la clase Mercancia
+	 * @return none
+	 */
 	public boolean almacenarMercancia(final Mercancia unaMercancia) {
 		boolean valor = false;
 
@@ -154,6 +192,14 @@ public class AccesoBD extends DerbyDB {
 		return valor;
 	}
 
+	/**
+	 * Funcion que retorna un listado de cliente, de acuerdo a un criterio de 
+	 * busqueda
+	 * 
+	 * @param  busqueda Este parametro define un criterio de busqueda
+	 * 
+	 * @return List<Cliente>
+	 */
 	public List<Cliente> buscarCliente(final String busqueda) {
 		final List<Cliente> listado = new ArrayList<Cliente>();
 
@@ -183,6 +229,12 @@ public class AccesoBD extends DerbyDB {
 		return listado;
 	}
 
+	/**
+	 * Funcion que busca un cliente especifico en la base de datos
+	 * 
+	 * @param  busqueda Este parametro define el criterio de busqueda
+	 * @return Cliente
+	 */
 	public Cliente buscarClienteEspecifico(final String busqueda) {
 		Cliente unCliente = null;
 
@@ -211,7 +263,13 @@ public class AccesoBD extends DerbyDB {
 		return unCliente;
 	}
 
-	// Funcion que busca un registro de una mercancia en la base de datos
+	/**
+	 * Funcion que busca un registro de una mercancia en la base de datos
+	 * 
+	 * @param  busqueda Este parametro define un criterio de busqueda
+	 * 
+	 * @return List<Mercancia>
+	 */
 	public List<Mercancia> buscarMercancia(final String busqueda) {
 		final List<Mercancia> listado = new ArrayList<Mercancia>();
 
@@ -234,7 +292,12 @@ public class AccesoBD extends DerbyDB {
 		return listado;
 	}
 
-	// Funcion que busca una mercancia en especifico en la base de datos
+	/**
+	 * Funcion que busca una mercancia en especifico en la base de datos
+	 * 
+	 * @param  busqueda Este parametro define un criterio de busqueda 
+	 * @return Mercancia
+	 */
 	public Mercancia buscarMercanciaEspecifica(final String busqueda) {
 		Mercancia unaMercancia = null;
 
@@ -256,6 +319,11 @@ public class AccesoBD extends DerbyDB {
 		return unaMercancia;
 	}
 
+	/**
+	 * Funcion que consulta el listado de ciudades en la base de datos
+	 * 
+	 * @return Vector<String>
+	 */
 	public Vector<String> consultarCiudades() {
 		final Vector<String> listado = new Vector<String>();
 
@@ -273,7 +341,13 @@ public class AccesoBD extends DerbyDB {
 		return listado;
 	}
 
-	// Funcion que consulta los datos de inicio de sesion en la base de datos
+	/**
+	 * Funcion que consulta los datos de inicio de sesion en la base de datos
+	 * 
+	 * @param  user     Este parametro define el nombre del usuario
+	 * @param  password Este parametro define el password del usuario
+	 * @return Empleado
+	 */
 	public Empleado consultarDB(final String user, final String password) {
 		Empleado unEmpleado = null;
 

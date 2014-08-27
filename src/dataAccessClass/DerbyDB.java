@@ -1,4 +1,8 @@
-// DerbyDB.java
+/**
+ * DerbyDB.java
+ *
+ * @author Ronny Z. Suero
+ */
 package dataAccessClass;
 
 import java.io.BufferedReader;
@@ -15,34 +19,44 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-/* Clase abstracta que contienen metodos y variables que permitiran la 
- creacion de la base de datos y leer el script SQL de la base de datos
- en caso necesario para la creacion de las tablas necesarias para la App. */
+/**
+ * Clase abstracta que contienen metodos y variables que permitiran la 
+ * creacion de la base de datos y leer el script SQL de la base de datos
+ * en caso necesario para la creacion de las tablas necesarias para la App. 
+*/
 public abstract class DerbyDB {
 	protected Connection derby;
 	protected Statement query;
 
 	private final String NOMBRE_BD = "LOCKDOM_DATABASE";
 
-	// private final String NOMBRE_BD = "prueba";
-
-	// Constructor de la clase
+	/**
+	 * Constructor de la clase
+	 * 
+	 */
 	public DerbyDB() {
 		conectarDB();
 	}
 
-	// Cierra la conexion con la base de datos
+	/**
+	 * Funcion que cierra la conexion con la base de datos
+	 *
+	 * @return none
+	 */
 	protected void cerrarDB() {
 		try {
 			query.close();
 			derby = DriverManager.getConnection("jdbc:derby:" + NOMBRE_BD
 					+ "; shutdown = true");
 			derby.close();
-		} catch (final Exception e) { /**/
-		}
+		} catch (final Exception e) { }
 	}
 
-	// Funcion que conecta la aplicacion a la base de datos
+	/**
+	 * Funcion que conecta la aplicacion a la base de datos
+	 *
+	 * @return none
+	 */
 	private void conectarDB() {
 		try {
 			Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
@@ -51,7 +65,6 @@ public abstract class DerbyDB {
 					+ "; create = true; dataEncryption = true; "
 					+ "bootPassword = proyectoLockDom!@#$%^&*");
 
-			// derby = DriverManager.getConnection("jdbc:derby:" + NOMBRE_BD);
 			if (derby != null)
 				query = derby.createStatement();
 		} catch (final Exception e) {
@@ -59,9 +72,13 @@ public abstract class DerbyDB {
 		}
 	}
 
-	/*
+	/**
 	 * Funcion que extraerá el script SQL de la Base De Datos para la creacion
 	 * de las tablas
+	 *
+	 * @param fichero Este parametro define el nombre del archivo a crear
+	 *
+	 * @return none
 	 */
 	public void crearFicheroTemporal(final String fichero) {
 		try {
@@ -93,7 +110,13 @@ public abstract class DerbyDB {
 		}
 	}
 
-	// Funcion que lee el fichero que contiene la informacion legal de la App
+	/**
+	 * Funcion que lee el fichero que contiene la informacion legal de la App
+	 * 
+	 * @param  fichero Este parametro define el nombre del archivo a leer
+	 * 
+	 * @return none
+	 */
 	public String leerFicheroLegal(final String fichero) {
 		String informacion = new String("");
 
@@ -116,8 +139,14 @@ public abstract class DerbyDB {
 		return informacion;
 	}
 
-	// Funcion que lee las sentencias SQL de un script y las ejecuta en la base
-	// de datos
+	/**
+	 * Funcion que lee las sentencias SQL de un script y las ejecuta en la base
+	 * de datos
+	 * 
+	 * @param fichero Este parametro define el nombre del archivo a leer
+	 *
+	 * @return none
+	 */
 	private void leerScriptSQL(final String fichero) {
 		try {
 			final File archivo = new File(NOMBRE_BD + "/" + fichero);
@@ -146,7 +175,6 @@ public abstract class DerbyDB {
 				new File(NOMBRE_BD + "/" + fichero).delete();
 				cerrarDB();
 			}
-		} catch (final Exception e) { /**/
-		}
+		} catch (final Exception e) { }
 	}
 }

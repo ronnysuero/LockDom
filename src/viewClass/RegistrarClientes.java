@@ -1,4 +1,8 @@
-//RegistrarClientes.java
+/**
+ * RegistrarClientes.java
+ *
+ * @author Ronny Z. Suero
+ */
 package viewClass;
 
 import java.awt.Color;
@@ -34,7 +38,11 @@ public class RegistrarClientes extends JInternalFrame {
 	private JComboBox<String> comboBox_Listado;
 	private JTextField textField_Numero;
 
-	// Constructor que inicializa los componentes graficos de la ventana
+	/**
+	 * Constructor que inicializa los componentes graficos de la ventana
+	 * @param  tituloVentana Este atributo define el titulo que tendra la ventana
+	 * @param  controlador   Este atributo define el controlador del frame RegistrarClientes
+	 */
 	public RegistrarClientes(final String tituloVentana,
 			final RegistrarClientesHandler controlador) {
 		super(tituloVentana, false, // resizable
@@ -53,9 +61,11 @@ public class RegistrarClientes extends JInternalFrame {
 		MenuPrincipal.javaHelp.agregarHelp(this, "registro cliente");
 	}
 
-	/*
+	/**
 	 * Funcion que crea un boton y una clase que interactuará como escucha del
 	 * evento ActionListener
+	 *
+	 * @return none
 	 */
 	private void crearBoton() {
 		class AgregarEventoBoton implements ActionListener {
@@ -74,7 +84,11 @@ public class RegistrarClientes extends JInternalFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 	}
 
-	// Funcion que crea un combo box y lo agrega al panel de direccion
+	/**
+	 * Funcion que crea un combo box y lo agrega al panel de direccion
+	 *
+	 * @return none
+	 */
 	private void crearComboBox() {
 		comboBox_Listado = new JComboBox<String>();
 		comboBox_Listado.setCursor(Cursor
@@ -93,7 +107,11 @@ public class RegistrarClientes extends JInternalFrame {
 		panel_Direccion.add(comboBox_Listado);
 	}
 
-	// Funcion que define los paneles y los agrega al jinternalframe
+	/**
+	 * Funcion que define los paneles y los agrega al jinternalframe
+	 *
+	 * @return none
+	 */
 	private void crearPaneles() {
 		panel_DatosPersonales = new JPanel();
 		panel_DatosPersonales.setLayout(null);
@@ -114,7 +132,11 @@ public class RegistrarClientes extends JInternalFrame {
 		getContentPane().add(panel_Direccion);
 	}
 
-	// Funcion que crea los textfields y los agrega a sus respectivos paneles
+	/**
+	 * Funcion que crea los textfields y los agrega a sus respectivos paneles
+	 *
+	 * @return none
+	 */
 	private void crearTextFields() {
 		class AgregarEvento implements KeyListener {
 			public void keyPressed(final KeyEvent e) {
@@ -253,7 +275,11 @@ public class RegistrarClientes extends JInternalFrame {
 		panel_Direccion.add(textField_Numero);
 	}
 
-	// Funcion que define los parametros y configuraciones que tendra la ventana
+	/**
+	 * Funcion que define los parametros y configuraciones que tendra la ventana
+	 *
+	 * @return none
+	 */
 	private void definirVentana() {
 		setSize(659, 405);
 		getContentPane().setLayout(null);
@@ -263,6 +289,11 @@ public class RegistrarClientes extends JInternalFrame {
 		getContentPane().setBackground(Color.WHITE);
 	}
 
+	/**
+	 * Funcion que retorna los datos de la direccion de un cliente en array
+	 *
+	 * @return String[]
+	 */
 	private String[] getDatosDireccion() {
 		final String[] datos = { textField_NombreCalle.getText().toLowerCase(),
 				textField_Numero.getText(),
@@ -274,6 +305,11 @@ public class RegistrarClientes extends JInternalFrame {
 		return datos;
 	}
 
+	/**
+	 *Funcion que retorna los datos personales de un cliente de un cliente en array
+	 *
+	 * @return String[]
+	 */
 	private String[] getDatosPersonales() {
 		final String[] datos = { textField_Nombre.getText().toLowerCase(),
 				textField_Apellido.getText().toLowerCase(),
@@ -283,7 +319,11 @@ public class RegistrarClientes extends JInternalFrame {
 
 	}
 
-	// Funcion que limpia los textfield despues de haber extraido su informacion
+	/**
+	 * Funcion que limpia los textfield despues de haber extraido su informacion
+	 *
+	 * @return none
+	 */
 	private void limpiarTextFields() {
 		textField_Nombre.setText("");
 		textField_Apellido.setText("");

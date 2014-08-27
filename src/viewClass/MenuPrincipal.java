@@ -1,4 +1,8 @@
-// MenuPrincipal.java
+/**
+ * MenuPrincipal.java
+ *
+ * @author Ronny Z. Suero
+ */
 package viewClass;
 
 import java.awt.Color;
@@ -50,13 +54,20 @@ public class MenuPrincipal extends JFrame {
 
 	protected static Help javaHelp;
 
-	// Constructor que inicializa los componentes graficos de la ventana
+	/**
+	 * Constructor que inicializa los componentes graficos de la ventana
+	 * 
+	 */
 	public MenuPrincipal() {
 		super("LockDom, S.A - Menu Principal");
 		definirVentana();
 	}
 
-	// Funcion que agrega un icono personalizado en la ventana de la aplicacion.
+	/**
+	 *  Funcion que agrega un icono personalizado en la ventana de la aplicacion.
+	 *
+	 * @return none
+	 */
 	private void agregarIconoFrame() {
 		try {
 			setIconImage(ImageIO.read(getClass().getClassLoader().getResource(
@@ -66,7 +77,13 @@ public class MenuPrincipal extends JFrame {
 		}
 	}
 
-	// Funcion que agrega los items del menu archivo
+	/**
+	 * Funcion que agrega los items del menu archivo
+	 
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private void agregarMenuArchivo(final JMenuBar JMB) {
 		class AddActionListener implements ActionListener {
 			public void actionPerformed(final ActionEvent e) {
@@ -108,7 +125,13 @@ public class MenuPrincipal extends JFrame {
 		JMenu_menuArchivo.add(JMenuItem_Salir);
 	}
 
-	// Funcion que agrega los items del menu ayuda
+	/**
+	 * Funcion que agrega los items del menu ayuda
+	 *
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private void agregarMenuAyuda(final JMenuBar JMB) {
 		JMenu_menuAyuda = new JMenu("Ayuda");
 		JMenu_menuAyuda.setIcon(new ImageIcon(getClass().getClassLoader()
@@ -124,7 +147,13 @@ public class MenuPrincipal extends JFrame {
 		JMenu_menuAyuda.add(JMenuItem_ayuda);
 	}
 
-	// Funcion que agrega los items del menu cliente
+	/**
+	 * Funcion que agrega los items del menu cliente
+	 * 
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private void agregarMenuClientes(final JMenuBar JMB) {
 		class AddActionListener implements ActionListener {
 			public void actionPerformed(final ActionEvent e) {
@@ -180,7 +209,13 @@ public class MenuPrincipal extends JFrame {
 		JMenu_menuCliente.add(JMenuItem_ModificarCliente);
 	}
 
-	// Funcion que agrega los items del menu mercancia
+	/**
+	 * Funcion que agrega los items del menu mercancia
+	 * 
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private void agregarMenuMercancia(final JMenuBar JMB) {
 		class AddActionListener implements ActionListener {
 			public void actionPerformed(final ActionEvent e) {
@@ -236,7 +271,13 @@ public class MenuPrincipal extends JFrame {
 		JMenu_menuMercancia.add(JMenuItem_RegistrarMercancia);
 	}
 
-	// Funcion que agrega los diferentes menu a la barra
+	/**
+	 * Funcion que agrega los diferentes menu a la barra
+	 * 
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private JMenuBar crearBarraMenu() {
 		JMenuBar_menuBar = new JMenuBar();
 		JMenuBar_menuBar.setBorder(new LineBorder(new Color(0, 102, 204)));
@@ -251,13 +292,25 @@ public class MenuPrincipal extends JFrame {
 		return JMenuBar_menuBar;
 	}
 
-	// Funcion que agrega el JDesktopPane al JFrame
+	/**
+	 * Funcion que agrega el JDesktopPane al JFrame
+	 * 
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private void crearJDesktopPane() {
 		desktop = new DesktopPane();
 		setContentPane(desktop);
 	}
 
-	// Funcion que define los parametros y configuraciones que tendra la ventana
+	/**
+	 * Funcion que define los parametros y configuraciones que tendra la ventana
+	 * 
+	 * @param JMB Este parametro define un objeto de tipo JMenuBar
+	 *
+	 * @return none
+	 */
 	private void definirVentana() {
 		crearJDesktopPane();
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

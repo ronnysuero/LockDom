@@ -1,4 +1,8 @@
-// DesktopPane.java
+/**
+ * DesktopPane.java
+ *
+ * @author Ronny Z. Suero
+ */
 package viewClass.extrasUI;
 
 import java.awt.Graphics;
@@ -11,13 +15,20 @@ import javax.swing.JOptionPane;
 public class DesktopPane extends JDesktopPane {
 	private BufferedImage fondo;
 
-	// Constructor por defecto
+	/**
+	 * Constructor por defecto
+	 * 
+	 */
 	public DesktopPane() {
 		super();
 		cargarImagen();
 	}
 
-	// Funcion que carga la imagen de fondo del JDesktopPane
+	/**
+	 * Funcion que carga la imagen de fondo del JDesktopPane
+	 *
+	 * @return none
+	 */
 	private void cargarImagen() {
 		try {
 			fondo = ImageIO.read(getClass().getClassLoader().getResource(
@@ -27,6 +38,13 @@ public class DesktopPane extends JDesktopPane {
 		}
 	}
 
+	/**
+	 * Funcion que pinta la imagen de fondo
+	 * 
+	 * @param g Este parametro define las propiedades del frame a pintar
+	 *
+	 * @return none 
+	 */
 	public void paintChildren(final Graphics g) {
 		g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
 		super.paintChildren(g);
