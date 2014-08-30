@@ -25,6 +25,7 @@ public class IniciarSesionHandler {
 		else {
 			iniciarSesion.dispose();
 			mp.setVisible(true);
+			
 			new Popup("Bienvenido: " + unEmpleado.getNombre() + " "
 					+ unEmpleado.getApellido(), mp).start();
 		}

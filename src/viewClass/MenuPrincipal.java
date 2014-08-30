@@ -53,7 +53,6 @@ public class MenuPrincipal extends JFrame {
 			.getScreenSize();
 
 	protected static Help javaHelp;
-
 	/**
 	 * Constructor que inicializa los componentes graficos de la ventana
 	 * 

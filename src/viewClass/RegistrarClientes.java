@@ -295,14 +295,12 @@ public class RegistrarClientes extends JInternalFrame {
 	 * @return String[]
 	 */
 	private String[] getDatosDireccion() {
-		final String[] datos = { textField_NombreCalle.getText().toLowerCase(),
-				textField_Numero.getText(),
-				textField_Sector.getText().toLowerCase(),
-				comboBox_Listado.getSelectedItem().toString() };
-
-		limpiarTextFields();
-
-		return datos;
+		return new String[] { 
+			textField_NombreCalle.getText().toLowerCase(),
+			textField_Numero.getText(),
+			textField_Sector.getText().toLowerCase(),
+			comboBox_Listado.getSelectedItem().toString() 
+		};
 	}
 
 	/**
@@ -311,12 +309,11 @@ public class RegistrarClientes extends JInternalFrame {
 	 * @return String[]
 	 */
 	private String[] getDatosPersonales() {
-		final String[] datos = { textField_Nombre.getText().toLowerCase(),
-				textField_Apellido.getText().toLowerCase(),
-				textField_Cedula.getText() };
-
-		return datos;
-
+		return new String[] {
+			textField_Nombre.getText().toLowerCase(),
+			textField_Apellido.getText().toLowerCase(),
+			textField_Cedula.getText()
+		};
 	}
 
 	/**
